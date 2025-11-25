@@ -1,0 +1,20 @@
+Key:
+  '#text': FastStartup-Resume-FwPostTime
+ActivityReference:
+  '#text': FastStartup_Timing_1.etl/2
+Name:
+  '#text': Firmware POST Duration
+MetricValues:
+  MetricValue:
+  - Value:
+      '#text': '9943'
+    ProgrammaticName:
+      '#text': Duration_ms
+  - Value:
+      '#text': '9.943'
+    ProgrammaticName:
+      '#text': Duration_sec
+Parents:
+  Parent:
+  - '#text': Phases
+  - '#text': FastStartup
