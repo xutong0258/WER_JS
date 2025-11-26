@@ -93,5 +93,14 @@ def remove_list_text_with_target_text(input_list, remove_target_text_1, remove_t
             new_list.append(item)
     return new_list
 
+def get_list_max_delta(input_list, stand):
+    max_delta = 0
+    for item in input_list:
+        if float(item) > stand:
+            delta = float(item) - stand
+            if delta > max_delta:
+                max_delta = float(delta)
+    return max_delta
+
 if __name__ == '__main__':
     pass

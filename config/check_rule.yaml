@@ -1,0 +1,6 @@
+check_rule_FastStartup:
+  'Root cause': '①输出差值最大的阶段，需要WPA继续分析（对应判断标准②）
+                 ②post on/off failed，需要WPA 接着分析（对应判断标准③）'
+  'Component': ''
+  'Solution': ''
+  '修复及验证': ''

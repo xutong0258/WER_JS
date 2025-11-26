@@ -1,28 +1,38 @@
+import pyautogui
+import subprocess
+import time
 import os
-import sys
+
+# 启动 WhatsApp
+os.startfile(r"D:\电脑管家迁移文件\windADK\Assessment and Deployment Kit\Windows Assessment Toolkit\x86\wac.exe")
+# 或者 wac.exe
+# subprocess.Popen(r"C:\Users\%USERNAME%\AppData\Local\WhatsApp\wac.exe")
+
+print("等待 WhatsApp 启动...")
+time.sleep(10)
+
+# 确保窗口最大化或激活
+pyautogui.hotkey('win', 'up')  # 最大化当前窗口
+time.sleep(1)
 
 
-from base.fileOP import *
-from base.list_help import *
+# 示例：点击搜索框（提前截图保存为 search_box.png）
+# pyautogui.click(pyautogui.locateCenterOnScreen('search_box.png', confidence=0.8))
 
-if __name__ == '__main__':
-    file = r'D:\11.xml'
-    log_lines = get_file_content_list(file)
-    text = 'AssessmentResults'
-    index = get_list_text_line_first_index(log_lines, text)
-    logger.info(f'index: {index}')
-    first_part = log_lines[0:index]
-    logger.info(f'first part: {first_part}')
+# 直接写坐标（最快，但屏幕分辨率/缩放改变会失效）
+def auto_send():
+    # 点击搜索框（坐标根据你屏幕自己调）
+    pyautogui.click(200, 120)
+    time.sleep(1)
+    pyautogui.write('张三', interval=0.1)
+    time.sleep(1.5)
+    pyautogui.click(200, 250)  # 点击搜索结果第一条
 
-    text = '/AssessmentResults'
-    index = get_list_text_line_first_index(log_lines, text)
-    logger.info(f'index: {index}')
-    second_part = log_lines[index+1:]
-    logger.info(f'second_part: {second_part}')
+    time.sleep(2)
+    pyautogui.click(700, 980)  # 点击消息输入框
+    pyautogui.write('Python 自动发消息成功！', interval=0.05)
+    time.sleep(0.5)
+    pyautogui.press('enter')
 
-    result_list = first_part + second_part
 
-    file_name = r'D:\12.xml'
-    content = ''.join(result_list)
-    wrtie_file(file_name, content)
-    pass
+auto_send()

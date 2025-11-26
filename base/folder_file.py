@@ -37,6 +37,7 @@ def delete_folder(folder_path):
         logger.info(f"错误: 没有权限删除 '{folder_path}'")
     except Exception as e:
         logger.info(f"删除文件夹时发生错误: {str(e)}")
+    return
 
 def create_folder(folder_path):
     try:
@@ -159,12 +160,6 @@ def get_file_path_by_dir(folder_path, target_file_name):
     file_path = None
     target_file_path = None
     for root, dirs, files in os.walk(folder_path):
-        for dir in dirs:
-            path = os.path.join(root, dir)
-            if '.' in path and '.git' not in path and '.idea' not in path:
-                # print(f"del: {path}")
-                pass
-
         for file in files:
             file_path = os.path.join(root, file)
             # print(file_path)
@@ -181,12 +176,6 @@ def get_latest_file_path_by_dir(folder_path, target_file, target_file_p2=None):
     file_list = []
     file_dict = {}
     for root, dirs, files in os.walk(folder_path):
-        for dir in dirs:
-            path = os.path.join(root, dir)
-            if '.' in path and '.git' not in path and '.idea' not in path:
-                # print(f"del: {path}")
-                pass
-
         for file in files:
             file_path = os.path.join(root, file)
             # logger.info(f'file_path:{file_path}')
